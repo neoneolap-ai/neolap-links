@@ -2,51 +2,17 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Catálogo NeoLap</title>
 
   <script>
-    const NEO_URL =
-      "https://script.google.com/macros/s/AKfycbwv6yWd6vKA8NS9fNfP0qjs5ltsRodWLc-Ajcwr879SjXIcAXY6P-UtQV8Sv0pNEj4GxA/exec";
-
-    const entrada = new URLSearchParams(window.location.search);
-
-    // El código público del vendedor.
-    const vendedor =
-      entrada.get("v") ||
-      entrada.get("u") ||
-      "";
-
-    const destino = new URL(NEO_URL);
-
-    // Siempre abre la sección catálogo.
-    destino.searchParams.set("modo", "catalogo");
-
-    if (vendedor) {
-      destino.searchParams.set("v", vendedor);
-    }
-
-    // Conservamos cualquier otro parámetro que agreguemos en el futuro.
-    entrada.forEach((valor, clave) => {
-      if (
-        clave !== "v" &&
-        clave !== "u" &&
-        clave !== "modo"
-      ) {
-        destino.searchParams.set(clave, valor);
-      }
-    });
-
-    window.location.replace(destino.toString());
+    window.location.href =
+      "https://script.google.com/macros/s/AKfycbwv6yWd6vKA8NS9fNfP0qjs5ltsRodWLc-Ajcwr879SjXIcAXY6P-UtQV8Sv0pNEj4GxA/exec"
+      + window.location.search;
   </script>
 </head>
 
 <body>
-  <p>Abriendo catálogo NeoLap...</p>
+  Abriendo catálogo NeoLap...
 </body>
 </html>
