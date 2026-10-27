@@ -2,10 +2,31 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>NeoLap</title>
+
+  <script>
+    const NEO_URL =
+      "https://script.google.com/macros/s/AKfycbwv6yWd6vKA8NS9fNfP0qjs5ltsRodWLc-Ajcwr879SjXIcAXY6P-UtQV8Sv0pNEj4GxA/exec";
+
+    // Mantiene los parámetros que lleguen al enlace de GitHub.
+    // Ejemplo:
+    // ?modo=catalogo&u=JUAN
+    const parametros = window.location.search;
+    const hash = window.location.hash;
+
+    window.location.replace(NEO_URL + parametros + hash);
+  </script>
 </head>
+
 <body>
-  <h1>NeoLap</h1>
-  <p>Redirecciones oficiales de Inventario NEO.</p>
+  <p>Ingresando a NeoLap...</p>
+
+  <noscript>
+    <a href="https://script.google.com/macros/s/AKfycbwv6yWd6vKA8NS9fNfP0qjs5ltsRodWLc-Ajcwr879SjXIcAXY6P-UtQV8Sv0pNEj4GxA/exec">
+      Abrir NeoLap
+    </a>
+  </noscript>
 </body>
 </html>
