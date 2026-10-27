@@ -1,18 +1,35 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Catálogo NeoLap</title>
-
-  <script>
-    window.location.href =
-      "https://script.google.com/macros/s/AKfycbwv6yWd6vKA8NS9fNfP0qjs5ltsRodWLc-Ajcwr879SjXIcAXY6P-UtQV8Sv0pNEj4GxA/exec"
-      + window.location.search;
-  </script>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Catálogo</title>
+  <meta name="robots" content="noindex,nofollow">
+  <style>
+    body{font-family:Arial,sans-serif;background:#f5f7f6;color:#17311f;margin:0;display:grid;place-items:center;min-height:100vh}
+    .box{background:#fff;border:1px solid #dfe7e2;border-radius:18px;padding:24px;max-width:520px;width:calc(100% - 48px);box-shadow:0 12px 36px rgba(0,0,0,.08);text-align:center}
+  </style>
 </head>
-
 <body>
-  Abriendo catálogo NeoLap...
+  <div class="box" id="msg">Abriendo catálogo…</div>
+  <script src="config.js"></script>
+  <script>
+    (function(){
+      const cfg = window.NEO_LINKS_CONFIG || {};
+      const base = String(cfg.appUrl || '').trim();
+      const token = new URLSearchParams(location.search).get('v') || '';
+      const msg = document.getElementById('msg');
+      if (!base || base.includes('PEGA_AQUI_TU_IMPLEMENTACION')) {
+        msg.textContent = 'Falta configurar la URL del sistema en config.js.';
+        return;
+      }
+      if (!token) {
+        msg.textContent = 'Enlace de catálogo incompleto.';
+        return;
+      }
+      const destino = base + '?v=' + encodeURIComponent(token);
+      location.replace(destino);
+    })();
+  </script>
 </body>
 </html>

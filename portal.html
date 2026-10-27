@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Acceso</title>
+  <meta name="robots" content="noindex,nofollow">
+  <style>
+    body{font-family:Arial,sans-serif;background:#f5f7f6;color:#17311f;margin:0;display:grid;place-items:center;min-height:100vh}
+    .box{background:#fff;border:1px solid #dfe7e2;border-radius:18px;padding:24px;max-width:520px;width:calc(100% - 48px);box-shadow:0 12px 36px rgba(0,0,0,.08);text-align:center}
+  </style>
+</head>
+<body>
+  <div class="box" id="msg">Abriendo acceso…</div>
+  <script src="config.js"></script>
+  <script>
+    (function(){
+      const cfg = window.NEO_LINKS_CONFIG || {};
+      const base = String(cfg.appUrl || '').trim();
+      const token = new URLSearchParams(location.search).get('u') || '';
+      const msg = document.getElementById('msg');
+      if (!base || base.includes('PEGA_AQUI_TU_IMPLEMENTACION')) {
+        msg.textContent = 'Falta configurar la URL del sistema en config.js.';
+        return;
+      }
+      if (!token) {
+        msg.textContent = 'Enlace de acceso incompleto.';
+        return;
+      }
+      const destino = base + '?modo=portal&u=' + encodeURIComponent(token);
+      location.replace(destino);
+    })();
+  </script>
+</body>
+</html>
